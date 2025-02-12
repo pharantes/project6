@@ -61,18 +61,18 @@ This is why we need to provide Vercel with the access details.
 
 ## Tasks
 
-### Read Data
+<!-- ### Read Data -->
 
 <!--
 - Set up a database. Use the [`lib/db.json` file](lib/db.json) to insert sample data.
 - In `pages/api/places/index.js`, replace the `places` variable imported from `lib/db.js` with a `GET` request from your database.
 - Do the same in `pages/api/[id]/index.js` for the details page. -->
 
-### Create Form
+<!-- ### Create Form
 
 - In `pages/create.js`, write the `addPlace` function to start a `POST` request.
 - Write the `POST` API route in `pages/api/places/index.js`.
-- Submitting the form should redirect the user to the homepage `/`.
+- Submitting the form should redirect the user to the homepage `/`. -->
 
 ### Update Entry
 

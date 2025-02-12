@@ -17,5 +17,11 @@ export default async function handler(request, response) {
     return;
   }
 
+  if (request.method === "PUT") {
+    const placeData = request.body;
+    await Place.findByIdAndUpdate(id, placeData);
+    return response.status(200).json({ status: `Place ${id} updated!` });
+  }
+
   response.status(405).json({ status: "Method not allowed." });
 }

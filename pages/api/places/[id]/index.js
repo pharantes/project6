@@ -1,33 +1,33 @@
 import dbConnect from "../../../../db/connect";
 import Place from "../../../../db/models/Place";
+import Comment from "../../../../db/models/Comment";
 
-export default async function handler(request, response) {
+export default async function handler(req, res) {
   await dbConnect();
-  const { id } = request.query;
+  const { id } = req.query;
 
-  if (request.method === "GET") {
+  if (req.method === "GET") {
     const place = await Place.findById(id);
-
     if (!place) {
-      response.status(404).json({ status: "Not Found" });
+      res.status(404).json({ status: "Not Found" });
       return;
     }
-
-    response.status(200).json(place);
+    res.status(200).json(place);
     return;
   }
 
-  if (request.method === "PUT") {
-    const placeData = request.body;
+  if (req.method === "PUT") {
+    const placeData = req.body;
     await Place.findByIdAndUpdate(id, placeData);
-    return response.status(200).json({ status: `Place ${id} updated!` });
+    res.status(200).json({ status: `Place ${id} updated!` });
+    return;
   }
 
-  if (request.method === "DELETE") {
+  if (req.method === "DELETE") {
     await Place.findByIdAndDelete(id);
-    return response
-      .status(200)
-      .json({ status: `Place ${id} successfully deleted.` });
+    await Comment.deleteMany({ placeId: id })
+    res.status(200).json({ status: `Place ${id} successfully deleted.` });
+    return;
   }
-  response.status(405).json({ status: "Method not allowed." });
+  res.status(405).json({ status: "Method not allowed." });
 }

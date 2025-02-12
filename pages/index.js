@@ -23,6 +23,7 @@ export default function Home() {
     <>
       <ListContainer>
         {data.map((place) => {
+          console.log(place._id)
           return (
             <li key={place._id}>
               <Card

@@ -1,40 +1,35 @@
 import dbConnect from "../../../../db/connect";
 import Comment from "../../../../db/models/Comment";
 
-export default async function handler(request, response) {
+export default async function handler(req, res) {
   await dbConnect();
 
-  if (request.method === "GET") {
-    try {
-      const { id } = request.query;
-      const foundComments = await Comment.find({ placeId: id });
-      response.status(200).json(foundComments);
-      return;
-    } catch (error) {
-      console.log(error);
-    }
+  if (req.method === "GET") {
+    const { id } = req.query;
+    const foundComments = await Comment.find({ placeId: id });
+    res.status(200).json(foundComments);
+    return;
   }
 
-  if (request.method === "POST") {
+  if (req.method === "POST") {
     try {
-      const commentData = request.body;
-      console.log(commentData);
+      const commentData = req.body;
       await Comment.create(commentData);
-      response.status(201).json({ status: "Comment created" });
+      res.status(201).json({ status: "Comment created" });
       return;
     } catch (error) {
       console.log(error);
-      response.status(400).json({ error: error.message });
+      res.status(400).json({ error: error.message });
     }
   }
 
-  if (request.method === "DELETE") {
-    const { id } = request.query;
+  if (req.method === "DELETE") {
+    const { id } = req.query;
     await Comment.findByIdAndDelete(id);
-    response
+    res
       .status(200)
       .json({ status: `Comment ${id} successfully deleted.` });
   }
 
-  response.status(405).json({ message: "Method not allowed" });
+  res.status(405).json({ message: "Method not allowed" });
 }

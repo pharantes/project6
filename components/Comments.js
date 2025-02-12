@@ -57,7 +57,7 @@ export default function Comments({ locationName }) {
       method: "DELETE",
     });
     if (response.ok) {
-      router.push(`/page/${id}`);
+      mutate();
     }
   }
   return (

@@ -23,5 +23,11 @@ export default async function handler(request, response) {
     return response.status(200).json({ status: `Place ${id} updated!` });
   }
 
+  if (request.method === "DELETE") {
+    await Place.findByIdAndDelete(id);
+    return response
+      .status(200)
+      .json({ status: `Place ${id} successfully deleted.` });
+  }
   response.status(405).json({ status: "Method not allowed." });
 }

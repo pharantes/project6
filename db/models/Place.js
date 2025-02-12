@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const placeSchema = new Schema({
+  _id: { type: String },
   name: { type: String, required: true },
   location: { type: String, required: true },
   image: { type: String, required: true },

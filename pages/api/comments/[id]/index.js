@@ -28,5 +28,13 @@ export default async function handler(request, response) {
     }
   }
 
+  if (request.method === "DELETE") {
+    const { id } = request.query;
+    await Comment.findByIdAndDelete(id);
+    response
+      .status(200)
+      .json({ status: `Comment ${id} successfully deleted.` });
+  }
+
   response.status(405).json({ message: "Method not allowed" });
 }

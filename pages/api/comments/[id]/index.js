@@ -7,16 +7,26 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     try {
       const { id } = request.query;
-      console.log(id);
       const foundComments = await Comment.find({ placeId: id });
-      console.log(foundComments);
       response.status(200).json(foundComments);
       return;
     } catch (error) {
       console.log(error);
     }
-  } else {
-    response.status(405).json({ message: "Method not allowed" });
-    return;
   }
+
+  if (request.method === "POST") {
+    try {
+      const commentData = request.body;
+      console.log(commentData);
+      await Comment.create(commentData);
+      response.status(201).json({ status: "Comment created" });
+      return;
+    } catch (error) {
+      console.log(error);
+      response.status(400).json({ error: error.message });
+    }
+  }
+
+  response.status(405).json({ message: "Method not allowed" });
 }

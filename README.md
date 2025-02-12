@@ -84,15 +84,15 @@ This is why we need to provide Vercel with the access details.
 - In `pages/places/[id].index.js`, write the `deletePlace` function to start a `DELETE` request.
 - Write the `DELETE` API route in `pages/api/places/[id]/index.js`. -->
 
-## Bonus
+<!-- ## Bonus
 
 ### Comment Section
 
-- To add a comment section for each place, you'll need to create a database schema or collection to store comments associated with each place. Each comment should have a reference to the place it belongs to, such as a place ID.
+- To add a comment section for each place, you'll need to create a database schema or collection to store comments associated with each place. Each comment should have a reference to the place it belongs to, such as a place ID. -->
 
-- Use the [`lib/db_comments.json` file](lib/db_comments.json) to insert sample data.
+<!-- - Use the [`lib/db_comments.json` file](lib/db_comments.json) to insert sample data. -->
 
-- Replace the value of `placeId` in each comment with one of the place id strings in your MongoDB. You can open MongoDB Atlas and checkout your places collection to find fitting ids.
+<!-- - Replace the value of `placeId` in each comment with one of the place id strings in your MongoDB. You can open MongoDB Atlas and checkout your places collection to find fitting ids. -->
 
 - Write a POST API route to handle comment submissions. This route should associate each comment with the appropriate place in your database.
 

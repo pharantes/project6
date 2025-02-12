@@ -1,4 +1,4 @@
-# Recap Project 6: Tourio App
+<!-- # Recap Project 6: Tourio App
 
 In this project, your team will create **Tourio**, an app designed for travelers.
 
@@ -59,7 +59,7 @@ This is why we need to provide Vercel with the access details.
 
 6. Congratulations, you are done! Open the Vercel URL of your project to see that your deployed application has now access to the cloud database.
 
-## Tasks
+## Tasks -->
 
 <!-- ### Read Data -->
 
@@ -78,11 +78,11 @@ This is why we need to provide Vercel with the access details.
 
 - In `pages/places/[id]/edit.js`, write the `editPlace` function to start a `PUT` request.
 - Write the `PUT` API route in `pages/api/[id]/index.js` -->
-
+<!--
 ### Delete Entry
 
 - In `pages/places/[id].index.js`, write the `deletePlace` function to start a `DELETE` request.
-- Write the `DELETE` API route in `pages/api/places/[id]/index.js`.
+- Write the `DELETE` API route in `pages/api/places/[id]/index.js`. -->
 
 ## Bonus
 
